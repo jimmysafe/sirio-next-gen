@@ -64,7 +64,9 @@ export default buildConfig({
       enabled: true,
       // Specify which collections should use Vercel Blob
       collections: {
-        media: true,
+        media: {
+          prefix: 'sirio-next-gen'
+        },
       },
       // Token provided by Vercel once Blob storage is added to your Vercel project
       token: process.env.BLOB_READ_WRITE_TOKEN!,

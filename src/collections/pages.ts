@@ -23,6 +23,12 @@ export const Pages: CollectionConfig = {
             required: true,
         },
         {
+            label: "Sottotitolo",
+            name: 'subtitle',
+            type: 'text',
+            required: true,
+        },
+        {
             label: "Slug",
             name: 'slug',
             type: 'text',

@@ -98,6 +98,7 @@ export interface User {
 export interface Media {
   id: number;
   alt: string;
+  prefix?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -249,6 +250,7 @@ export interface Tutor {
 export interface Page {
   id: number;
   title: string;
+  subtitle: string;
   slug: string;
   hero: {
     type: 'none' | 'grande' | 'piccolo';
@@ -367,6 +369,7 @@ export interface UsersSelect<T extends boolean = true> {
  */
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
+  prefix?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -416,6 +419,7 @@ export interface CoursesSelect<T extends boolean = true> {
  */
 export interface PagesSelect<T extends boolean = true> {
   title?: T;
+  subtitle?: T;
   slug?: T;
   hero?:
     | T
