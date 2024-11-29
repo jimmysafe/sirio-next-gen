@@ -10,6 +10,6 @@ export default async function Home() {
     //     collection: 'users',
     //   })
     return (
-        <p>Homepage</p>
+        <p>Homepage V1</p>
     )
 }
