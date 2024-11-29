@@ -1,0 +1,42 @@
+:root {
+  --primary: #0eb8b8;
+  --primary-foreground: #ffffff;
+  --secondary: #4176a4;
+  --secondary-foreground: #ffffff;
+}
+
+.btn--style-primary {
+  --color: var(--primary-foreground);
+  --bg-color: var(--primary);
+  --box-shadow: none;
+  --hover-bg: var(--primary);
+  --hover-color: var(--primary-foreground);
+}
+.btn--style-pill {
+  --bg-color: var(--secondary);
+  --color: var(--secondary-foreground);
+  --hover-color: var(--secondary-foreground);
+  --hover-bg: var(--secondary);
+}
+
+.btn.btn--disabled {
+  --bg-color: var(--theme-elevation-100);
+  --hover-bg: var(--theme-elevation-100);
+  --color: var(--theme-elevation-400);
+  --hover-color: var(--theme-elevation-400);
+}
+
+.pill {
+  --bg-color: var(--secondary);
+  --color: var(--secondary-foreground);
+  --hover-color: var(--secondary-foreground);
+  --hover-bg: var(--secondary);
+}
+
+.nav__link-indicator {
+  background: var(--primary);
+}
+
+.nav nav a.active {
+  color: var(--primary);
+}
