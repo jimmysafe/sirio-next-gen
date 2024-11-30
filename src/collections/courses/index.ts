@@ -1,5 +1,12 @@
 import { slugField } from '@/fields/slug'
-import { BoldFeature, HeadingFeature, InlineToolbarFeature, ItalicFeature, lexicalEditor, ParagraphFeature, UnderlineFeature } from '@payloadcms/richtext-lexical'
+import {
+    BoldFeature,
+    InlineToolbarFeature,
+    ItalicFeature,
+    lexicalEditor,
+    ParagraphFeature,
+    UnderlineFeature,
+} from '@payloadcms/richtext-lexical';
 import type { CollectionConfig } from 'payload'
 import { revalidateCourse } from './hooks/revalidateCourse'
 
