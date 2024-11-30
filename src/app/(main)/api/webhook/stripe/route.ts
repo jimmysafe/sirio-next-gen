@@ -2,6 +2,7 @@ import Stripe from "stripe";
 import { buffer } from "node:stream/consumers";
 import { CheckoutCustomerInfoSchema } from "@/modules/checkout/schema";
 import { apiClient } from "@/lib/client";
+import { z } from "zod";
 
 export const dynamic = "force-dynamic";
 
@@ -25,8 +26,7 @@ export async function POST(request: Request) {
     if (event.type === "payment_intent.succeeded") {
         try {
             const paymentIntent = event.data.object;
-            console.log(paymentIntent.metadata);
-            const result = CheckoutCustomerInfoSchema.safeParse(
+            const result = CheckoutCustomerInfoSchema.extend({ courseId: z.coerce.number() }).safeParse(
                 paymentIntent.metadata
             );
             if (!result.success) throw new Error("Invalid Metadata");
