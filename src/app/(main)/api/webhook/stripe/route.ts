@@ -25,6 +25,7 @@ export async function POST(request: Request) {
     if (event.type === "payment_intent.succeeded") {
         try {
             const paymentIntent = event.data.object;
+            console.log(paymentIntent.metadata);
             const result = CheckoutCustomerInfoSchema.safeParse(
                 paymentIntent.metadata
             );
