@@ -6,8 +6,9 @@ import { CourseCarousel } from "@/modules/courses/components/course-carousel";
 import { getCoursesBaseInfo } from "@/modules/courses/data";
 import { Suspense } from "react";
 
+export const dynamic = 'force-dynamic'
 
-export default async function Home() {
+export default function Home() {
     const coursesInfoPromise = getCoursesBaseInfo()
     return (
         <section>

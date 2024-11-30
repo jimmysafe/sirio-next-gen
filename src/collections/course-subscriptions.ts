@@ -27,8 +27,28 @@ export const Iscrizioni: CollectionConfig = {
             required: true,
         },
         {
-            label: "Link alla ricevuta di pagamento",
-            name: 'paymentLink',
+            label: "Email",
+            name: 'email',
+            type: 'text',
+        },
+        {
+            label: "Codice Fiscale",
+            name: 'codiceFiscale',
+            type: 'text',
+        },
+        {
+            label: "Partita IVA",
+            name: 'partitaIva',
+            type: 'text',
+        },
+        {
+            label: "Codice Univoco",
+            name: 'codiceUnivoco',
+            type: 'text',
+        },
+        {
+            label: "ID Pagamento",
+            name: 'paymentId',
             type: 'text',
         },
         {

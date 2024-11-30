@@ -8,6 +8,17 @@ export async function getCourses() {
     })
 }
 
+export async function getCourseById(id: number) {
+    const client = await apiClient();
+    const course = await client.findByID({
+        id,
+        collection: 'courses',
+    })
+
+    return course;
+}
+
+
 export async function getCourseBySlug(slug: string) {
     const client = await apiClient();
     const courses = await client.find({

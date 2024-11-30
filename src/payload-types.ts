@@ -196,7 +196,11 @@ export interface CourseSubscription {
   id: number;
   nome: string;
   cognome: string;
-  paymentLink?: string | null;
+  email?: string | null;
+  codiceFiscale?: string | null;
+  partitaIva?: string | null;
+  codiceUnivoco?: string | null;
+  paymentId?: string | null;
   course?: (number | null) | Course;
   updatedAt: string;
   createdAt: string;
@@ -470,7 +474,11 @@ export interface TutorsSelect<T extends boolean = true> {
 export interface CourseSubscriptionsSelect<T extends boolean = true> {
   nome?: T;
   cognome?: T;
-  paymentLink?: T;
+  email?: T;
+  codiceFiscale?: T;
+  partitaIva?: T;
+  codiceUnivoco?: T;
+  paymentId?: T;
   course?: T;
   updatedAt?: T;
   createdAt?: T;

@@ -11,7 +11,7 @@ export const CourseTeacher = (
   course: Awaited<ReturnType<typeof getCourseBySlug>>
 ) => {
   if (!course) return null;
-  const teacher = course.teacher as Teacher;
+  const teacher = course.teacher ? course.teacher as Teacher : null;
   const tutors = (course.tutors || []) as Tutor[];
   return (
     <section className="py-12">
@@ -23,10 +23,10 @@ export const CourseTeacher = (
                 Insegnante
               </Badge>
               <h1 className="mb-8 text-3xl font-medium lg:text-5xl">
-                {teacher.nome}{' '}{teacher.cognome}
+                {teacher?.nome}{' '}{teacher?.cognome}
               </h1>
               <div className="max-w-3xl text-muted-foreground lg:text-xl">
-                <RichText content={teacher.description} />
+                <RichText content={teacher?.description || {}} />
               </div>
               {tutors?.length > 0 && (
                 <div className="lg:block hidden">
@@ -37,8 +37,8 @@ export const CourseTeacher = (
             <div>
               <div>
                 <Image
-                  src={(teacher.photo as Media).url || "/images/placeholder.jpg"}
-                  alt={(teacher.photo as Media).alt}
+                  src={(teacher?.photo as Media).url || "/images/placeholder.jpg"}
+                  alt={(teacher?.photo as Media).alt}
                   className="max-h-96 w-full object-cover lg:max-h-none rounded-md"
                   height={500}
                   width={500}
