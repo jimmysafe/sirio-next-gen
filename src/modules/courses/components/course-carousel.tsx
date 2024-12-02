@@ -38,7 +38,6 @@ export const CourseCarousel = (props: {
     };
   }, [carouselApi]);
 
-  courses.docs[0].hero_image
   return (
     <section className="pb-32 pt-16">
       <div className="contained">

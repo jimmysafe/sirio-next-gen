@@ -36,7 +36,7 @@ export const CourseHero = (
             <div className="grid grid-cols-2 gap-4">
               <div className="rounded border border-border px-8 py-6 text-center">
                 <p className="mb-2 text-xl font-medium">Giornate</p>
-                <div className="mb-4 flex items-baseline justify-center lg:justify-start">
+                <div className="mb-4 flex items-baseline justify-center">
                   <div className="text-4xl font-bold lg:text-6xl">
                     {course.days}
                   </div>
@@ -44,7 +44,7 @@ export const CourseHero = (
               </div>
               <div className="rounded border border-border px-8 py-6 text-center">
                 <p className="mb-2 text-xl font-medium">Moduli</p>
-                <div className="mb-4 flex items-baseline justify-center lg:justify-start">
+                <div className="mb-4 flex items-baseline justify-center">
                   <div className="text-4xl font-bold lg:text-6xl">
                     {course.modules}
                   </div>
