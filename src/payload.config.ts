@@ -38,6 +38,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
+  telemetry: false,
   collections: [Users, Media, Courses, Pages, Teachers, Tutors, Iscrizioni],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
