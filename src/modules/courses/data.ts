@@ -5,6 +5,11 @@ export async function getCourses() {
     return client.find({
         collection: 'courses',
         limit: 10,
+        where: {
+            _status: {
+                equals: 'published'
+            }
+        },
     })
 }
 
@@ -40,7 +45,13 @@ export async function getCoursesBaseInfo() {
     return client.find({
         collection: 'courses',
         limit: 10,
+        where: {
+            _status: {
+                equals: 'published'
+            }
+        },
         select: {
+            _status: true,
             title: true,
             slug: true,
             description: true,
