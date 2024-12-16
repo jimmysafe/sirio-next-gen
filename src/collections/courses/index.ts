@@ -9,6 +9,15 @@ import {
 } from '@payloadcms/richtext-lexical';
 import type { CollectionConfig } from 'payload'
 import { revalidateCourse } from './hooks/revalidateCourse'
+import { generatePreviewPath } from '@/lib/generate-preview-paths';
+import { populatePublishedAt } from './hooks/populatePublishedAt';
+import {
+    MetaDescriptionField,
+    MetaImageField,
+    MetaTitleField,
+    OverviewField,
+    PreviewField,
+} from '@payloadcms/plugin-seo/fields'
 
 export const Courses: CollectionConfig = {
     slug: 'courses',
@@ -19,9 +28,23 @@ export const Courses: CollectionConfig = {
     access: {
         read: () => true,
     },
+    defaultPopulate: {
+        title: true,
+        slug: true,
+    },
     admin: {
         useAsTitle: 'title', // campo da usare come titolo
         defaultColumns: ['title', 'slug', '_status', 'updatedAt'], // colonne da mostrare in tabella
+        livePreview: {
+            url: ({ data }) => {
+                const path = generatePreviewPath({
+                    slug: typeof data?.slug === 'string' ? data.slug : '',
+                    collection: 'courses',
+                })
+
+                return path
+            },
+        },
     },
     versions: {
         drafts: {
@@ -33,6 +56,7 @@ export const Courses: CollectionConfig = {
     },
     hooks: {
         afterChange: [revalidateCourse],
+        beforeChange: [populatePublishedAt],
     },
     fields: [
         {
@@ -162,6 +186,33 @@ export const Courses: CollectionConfig = {
                     ]
                 },
                 {
+                    label: "Sezione Pagamento",
+                    fields: [
+                        {
+                            label: "Titolo",
+                            name: 'callout',
+                            type: 'text',
+                            required: true,
+                        },
+                        {
+                            label: "Benefici",
+                            name: 'benefits',
+                            type: 'array',
+                            maxRows: 6,
+                            minRows: 3,
+                            required: true,
+                            fields: [
+                                {
+                                    label: 'Testo',
+                                    name: 'text',
+                                    type: 'text',
+                                    required: true,
+                                }
+                            ]
+                        },
+                    ]
+                },
+                {
                     label: 'Studenti',
                     fields: [
                         {
@@ -185,7 +236,34 @@ export const Courses: CollectionConfig = {
                             on: 'course',
                         },
                     ]
-                }
+                },
+                {
+                    name: 'meta',
+                    label: 'SEO',
+                    fields: [
+                        OverviewField({
+                            titlePath: 'meta.title',
+                            descriptionPath: 'meta.description',
+                            imagePath: 'meta.image',
+                        }),
+                        MetaTitleField({
+                            hasGenerateFn: true,
+                        }),
+                        MetaImageField({
+                            relationTo: 'media',
+                        }),
+
+                        MetaDescriptionField({}),
+                        PreviewField({
+                            // if the `generateUrl` function is configured
+                            hasGenerateFn: true,
+
+                            // field paths to match the target field for data
+                            titlePath: 'meta.title',
+                            descriptionPath: 'meta.description',
+                        }),
+                    ],
+                },
             ]
         },
         {

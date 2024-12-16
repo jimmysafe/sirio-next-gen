@@ -23,7 +23,7 @@ export const CoursePricing = (
           </div>
           <div className="flex flex-col justify-between gap-6 md:flex-row">
             <h2 className="max-w-screen-sm text-3xl font-bold md:text-4xl">
-              Eddaje su! Investi nella tua istruzione con noi.
+              {course.callout}
             </h2>
             <div className="md:text-right">
               <span className="text-3xl font-bold md:text-5xl">
@@ -39,30 +39,12 @@ export const CoursePricing = (
             </p>
             <div className="flex flex-col justify-between gap-10 md:flex-row md:gap-20">
               <ul className="grid gap-x-20 gap-y-4 font-medium md:grid-cols-2">
-                <li className="flex items-center gap-2">
-                  <Check className="w-4" />
-                  {course.modules} Moduli
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-4" />
-                  {course.days} Giornate
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-4" />
-                  Impara dai migliori nel settore
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-4" />
-                  Certificazione riconosciuta
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-4" />
-                  Tanta Pratica
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-4" />
-                  Sbocchi lavorativi
-                </li>
+                {course.benefits.map(benefit => (
+                  <li key={benefit.id} className="flex items-center gap-2">
+                    <Check className="w-4" />
+                    {benefit.text}
+                  </li>
+                ))}
               </ul>
               <div className="flex flex-col gap-4">
                 <BuyCourseButton courseId={course.id} />

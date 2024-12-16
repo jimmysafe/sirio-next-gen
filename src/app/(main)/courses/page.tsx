@@ -3,8 +3,18 @@ import RichText from "@/components/ui/richtext";
 import { formatDate } from "@/lib/utils";
 import { getCourses } from "@/modules/courses/data";
 import { Media, Teacher } from "@/payload-types";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+export const dynamic = 'force-static'
+export const revalidate = 600
+
+export function generateMetadata(): Metadata {
+  return {
+    title: `Corsi | Sirio Next Gen`,
+  }
+}
 
 export default async function CoursesPage() {
   const courses = await getCourses();

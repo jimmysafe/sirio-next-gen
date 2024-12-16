@@ -1,9 +1,11 @@
 import { apiClient } from "@/lib/client";
+import { draftMode } from "next/headers";
 
 export async function getCourses() {
     const client = await apiClient();
     return client.find({
         collection: 'courses',
+        draft: false,
         limit: 10,
         where: {
             _status: {
@@ -14,9 +16,11 @@ export async function getCourses() {
 }
 
 export async function getCourseById(id: number) {
+    const { isEnabled: draft } = await draftMode()
     const client = await apiClient();
     const course = await client.findByID({
         id,
+        draft,
         collection: 'courses',
     })
 
@@ -25,10 +29,12 @@ export async function getCourseById(id: number) {
 
 
 export async function getCourseBySlug(slug: string) {
+    const { isEnabled: draft } = await draftMode()
     const client = await apiClient();
     const courses = await client.find({
         collection: 'courses',
         limit: 1,
+        draft,
         depth: 10,
         where: {
             slug: {
@@ -36,8 +42,7 @@ export async function getCourseBySlug(slug: string) {
             }
         }
     })
-    if (courses.docs.length === 0) return null;
-    return courses.docs[0];
+    return courses.docs?.[0];
 }
 
 export async function getCoursesBaseInfo() {

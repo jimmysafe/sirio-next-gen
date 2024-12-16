@@ -15,6 +15,8 @@ import { it, itTranslations } from '@payloadcms/translations/languages/it'
 import { Teachers } from './collections/teachers'
 import { Tutors } from './collections/tutors'
 import { Iscrizioni } from './collections/course-subscriptions'
+import { seoPlugin } from '@payloadcms/plugin-seo'
+import { generateTitle, generateURL } from './lib/generate-meta'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -34,6 +36,28 @@ export default buildConfig({
       }
     },
     user: Users.slug,
+    livePreview: {
+      breakpoints: [
+        {
+          label: 'Mobile',
+          name: 'mobile',
+          width: 375,
+          height: 667,
+        },
+        {
+          label: 'Tablet',
+          name: 'tablet',
+          width: 768,
+          height: 1024,
+        },
+        {
+          label: 'Desktop',
+          name: 'desktop',
+          width: 1440,
+          height: 900,
+        },
+      ],
+    },
     importMap: {
       baseDir: path.resolve(dirname),
     },
@@ -60,6 +84,10 @@ export default buildConfig({
   },
   sharp,
   plugins: [
+    seoPlugin({
+      generateTitle,
+      generateURL,
+    }),
     payloadCloudPlugin(),
     vercelBlobStorage({
       enabled: true,

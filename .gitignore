@@ -44,4 +44,7 @@ next-env.d.ts
 
 /media
 
+public/robots.txt
+public/sitemap*.xml
+
 

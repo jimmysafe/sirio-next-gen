@@ -5,9 +5,10 @@ import tailwindcssAnimate from "tailwindcss-animate";
 const config = {
   darkMode: ['class'],
   content: [
-    './src/app/(main)/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/modules/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/**/*.{ts,tsx}',
   ],
   theme: {
     extend: {
