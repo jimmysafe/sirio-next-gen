@@ -30,8 +30,6 @@ const getCoursesSitemap = unstable_cache(
     })
 
 
-    console.log(results)
-
     const dateFallback = new Date().toISOString()
 
     const defaultSitemap = [
