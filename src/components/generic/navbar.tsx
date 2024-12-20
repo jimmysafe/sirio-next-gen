@@ -13,7 +13,7 @@ import Link from "next/link";
 export const items: { label: string; href: string }[] = [
     { label: "Home", href: "/" },
     { label: "Corsi", href: "/courses" },
-    { label: "Contatti", href: "/contact" },
+    { label: "Contatti", href: "/contatti" },
 ];
 
 export const secondaryItems: { label: string; href: string }[] = [

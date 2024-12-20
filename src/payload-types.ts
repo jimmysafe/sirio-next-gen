@@ -513,6 +513,7 @@ export interface TeamBlock {
  * via the `definition` "ContactBlock".
  */
 export interface ContactBlock {
+  type?: ('small' | 'large') | null;
   title: string;
   subtitle: {
     root: {
@@ -531,6 +532,14 @@ export interface ContactBlock {
   };
   phone: string;
   email: string;
+  address?: string | null;
+  social?:
+    | {
+        name?: ('facebook' | 'instagram' | 'linkedin' | 'twitter' | 'youtube') | null;
+        link?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'contact';
@@ -842,10 +851,19 @@ export interface PagesSelect<T extends boolean = true> {
         contact?:
           | T
           | {
+              type?: T;
               title?: T;
               subtitle?: T;
               phone?: T;
               email?: T;
+              address?: T;
+              social?:
+                | T
+                | {
+                    name?: T;
+                    link?: T;
+                    id?: T;
+                  };
               id?: T;
               blockName?: T;
             };

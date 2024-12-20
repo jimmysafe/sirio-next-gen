@@ -10,7 +10,7 @@ export const generateTitle: GenerateTitle<Course | Page> = ({ doc }) => {
   return doc?.title ? `${doc.title} | Sirio Next Gen` : 'Sirio Next Gen'
 }
 
-export const generateURL: GenerateURL<Page | Page> = ({ doc }) => {
+export const generateURL: GenerateURL<Course | Page> = ({ doc }) => {
   const url = getServerSideURL()
 
   return doc?.slug ? `${url}/${doc.slug}` : url

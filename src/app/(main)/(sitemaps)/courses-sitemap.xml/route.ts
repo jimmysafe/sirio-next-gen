@@ -29,18 +29,30 @@ const getCoursesSitemap = unstable_cache(
       },
     })
 
+
+    console.log(results)
+
     const dateFallback = new Date().toISOString()
+
+    const defaultSitemap = [
+      {
+        loc: `${SITE_URL}/courses`,
+        lastmod: dateFallback,
+      },
+    ]
 
     const sitemap = results.docs
       ? results.docs
-        .filter((post) => Boolean(post?.slug))
-        .map((post) => ({
-          loc: `${SITE_URL}/courses/${post?.slug}`,
-          lastmod: post.updatedAt || dateFallback,
-        }))
+        .filter((course) => Boolean(course?.slug))
+        .map((course) => {
+          return {
+            loc: `${SITE_URL}/courses/${course?.slug}`,
+            lastmod: course.updatedAt || dateFallback,
+          }
+        })
       : []
 
-    return sitemap
+    return [...defaultSitemap, ...sitemap]
   },
   ['courses-sitemap'],
   {

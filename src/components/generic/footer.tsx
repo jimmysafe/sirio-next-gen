@@ -15,7 +15,7 @@ const sections = [
 
 export const Footer = () => {
     return (
-        <section className="py-32 bg-secondary text-secondary-foreground">
+        <section className="py-32 bg-primary text-primary-foreground">
             <div className="contained">
                 <footer>
                     <div className="flex flex-col items-center justify-between gap-10 text-center lg:flex-row lg:text-left">
@@ -73,7 +73,7 @@ export const Footer = () => {
                         </div>
                     </div>
                     <div className="mt-20 flex flex-col justify-between gap-4 border-t pt-8 text-center text-sm font-medium  lg:flex-row lg:items-center lg:text-left">
-                        <p>©{new Date().getFullYear()} SirioNextGen</p>
+                        <p>©{new Date().getFullYear()} SirioNextGen | P.IVA e Codice fiscale: IT0388100000</p>
                         <ul className="flex justify-center gap-4 lg:justify-start">
                             <li className="">
                                 <a href="#"> Termini e Condizioni</a>
