@@ -1,8 +1,11 @@
-import { Check } from "lucide-react";
+import { ArrowRight, Check, FileIcon } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { getCourseBySlug } from "../data";
 import { price } from "@/lib/utils";
 import { BuyCourseButton } from "@/modules/checkout/components/buy-course-button";
+import Link from "next/link";
+import { Media } from "@/payload-types";
+import { Button } from "@/components/ui/button";
 
 export const CoursePricing = (
   course: Awaited<ReturnType<typeof getCourseBySlug>>
@@ -46,7 +49,16 @@ export const CoursePricing = (
                   </li>
                 ))}
               </ul>
-              <div className="flex flex-col gap-4">
+              <div className="flex gap-4">
+                {course.brochure && (
+                  <Button asChild variant={'outline'}>
+                    <Link href={(course.brochure as Media).url || ''} target="_blank">
+                      <FileIcon className="size-4 mr-2" />
+                      Visualizza la brochure
+                    </Link>
+                  </Button>
+                )
+                }
                 <BuyCourseButton courseId={course.id} />
               </div>
             </div>

@@ -9,6 +9,7 @@ export const Media: React.FC<Props> = (props) => {
   const { className, htmlElement = 'div', resource } = props
 
   const isVideo = typeof resource === 'object' && resource?.mimeType?.includes('video')
+  const isPdf = typeof resource === 'object' && resource?.mimeType?.includes('pdf')
   const Tag = (htmlElement as any) || Fragment
 
   return (
@@ -19,7 +20,7 @@ export const Media: React.FC<Props> = (props) => {
         }
         : {})}
     >
-      {isVideo ? <VideoMedia {...props} /> : <ImageMedia {...props} />}
+      {isVideo ? <VideoMedia {...props} /> : isPdf ? <p>PDF HERE</p> : <ImageMedia {...props} />}
     </Tag>
   )
 }

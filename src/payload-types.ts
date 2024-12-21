@@ -249,6 +249,7 @@ export interface Course {
   };
   teacher: number | Teacher;
   tutors?: (number | Tutor)[] | null;
+  brochure?: (number | null) | Media;
   slug?: string | null;
   slugLock?: boolean | null;
   publishedAt?: string | null;
@@ -268,8 +269,24 @@ export interface CourseSubscription {
   codiceFiscale?: string | null;
   partitaIva?: string | null;
   codiceUnivoco?: string | null;
-  paymentId?: string | null;
   course?: (number | null) | Course;
+  paymentStatus?: ('acconto' | 'saldato') | null;
+  paymentId?: string | null;
+  notes?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -767,6 +784,7 @@ export interface CoursesSelect<T extends boolean = true> {
       };
   teacher?: T;
   tutors?: T;
+  brochure?: T;
   slug?: T;
   slugLock?: T;
   publishedAt?: T;
@@ -916,8 +934,10 @@ export interface CourseSubscriptionsSelect<T extends boolean = true> {
   codiceFiscale?: T;
   partitaIva?: T;
   codiceUnivoco?: T;
-  paymentId?: T;
   course?: T;
+  paymentStatus?: T;
+  paymentId?: T;
+  notes?: T;
   updatedAt?: T;
   createdAt?: T;
 }

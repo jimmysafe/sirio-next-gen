@@ -58,9 +58,6 @@ export default async function CoursesPage() {
                       </div>
                     </div>
                     <section className="p-4 pt-0">
-                      {/* <div>
-                <Badge>{course.label}</Badge>
-              </div> */}
                       <div className="mb-2 line-clamp-3 break-words pt-4 text-lg font-medium md:mb-3 md:pt-4 md:text-2xl lg:pt-4 lg:text-3xl">
                         {course.title}
                       </div>

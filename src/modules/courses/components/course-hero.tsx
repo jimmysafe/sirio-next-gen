@@ -5,6 +5,8 @@ import Image from "next/image";
 import { BuyCourseButton } from "@/modules/checkout/components/buy-course-button";
 import RichText from "@/components/ui/richtext";
 import { Media } from "@/payload-types";
+import { ArrowRight, FileIcon } from "lucide-react";
+import Link from "next/link";
 
 export const CourseHero = (
   course: Awaited<ReturnType<typeof getCourseBySlug>>
@@ -50,6 +52,12 @@ export const CourseHero = (
                   </div>
                 </div>
               </div>
+              {course.brochure && (
+                <Link href={(course.brochure as Media).url || ''} target="_blank" className="group rounded bg-primary text-primary-foreground col-span-2 px-8 py-4 text-center flex gap-4 items-center">
+                  <h4 className="font-medium">Visualizza la brochure</h4>
+                  <ArrowRight className="group-hover:translate-x-1 duration-200" />
+                </Link>
+              )}
             </div>
           </div>
           <Image

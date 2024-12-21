@@ -34,7 +34,9 @@ export default function RootLayout({
             >
                 <main className="min-h-screen">
                     <Navbar />
-                    {children}
+                    <div className="pb-20">
+                        {children}
+                    </div>
                     <Footer />
                 </main>
                 <Toaster />

@@ -94,6 +94,9 @@ export const Courses: CollectionConfig = {
                             type: 'upload',
                             relationTo: 'media',
                             required: true,
+                            filterOptions: {
+                                mimeType: { contains: 'image' }
+                            }
                         },
                     ]
                 },
@@ -139,6 +142,9 @@ export const Courses: CollectionConfig = {
                                     name: 'photo',
                                     type: 'upload',
                                     relationTo: 'media',
+                                    filterOptions: {
+                                        mimeType: { contains: 'image' }
+                                    }
                                 }
                             ]
                         }
@@ -285,6 +291,18 @@ export const Courses: CollectionConfig = {
             },
             hasMany: true,
             relationTo: 'tutors',
+        },
+        {
+            label: 'Brochure',
+            name: 'brochure',
+            type: 'upload',
+            relationTo: 'media',
+            admin: {
+                position: 'sidebar',
+            },
+            filterOptions: {
+                mimeType: { contains: 'pdf' }
+            }
         },
         ...slugField(),
         {

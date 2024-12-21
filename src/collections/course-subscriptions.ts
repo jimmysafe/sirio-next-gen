@@ -1,3 +1,4 @@
+import { BoldFeature, InlineToolbarFeature, ItalicFeature, lexicalEditor, ParagraphFeature, UnderlineFeature } from '@payloadcms/richtext-lexical'
 import type { CollectionConfig } from 'payload'
 
 export const Iscrizioni: CollectionConfig = {
@@ -47,14 +48,50 @@ export const Iscrizioni: CollectionConfig = {
             type: 'text',
         },
         {
+            name: 'course',
+            label: 'Corso',
+            type: 'relationship',
+            relationTo: 'courses',
+        },
+        {
+            label: "Stato Pagamento",
+            name: 'paymentStatus',
+            type: 'select',
+            defaultValue: 'saldato',
+            options: [
+                { label: 'Acconto', value: 'acconto' },
+                { label: 'Saldato', value: 'saldato' },
+            ],
+            admin: {
+                position: 'sidebar',
+            }
+        },
+        {
             label: "ID Pagamento",
             name: 'paymentId',
             type: 'text',
+            admin: {
+                position: 'sidebar',
+            }
         },
         {
-            name: 'course',
-            type: 'relationship',
-            relationTo: 'courses',
+            label: "Note",
+            name: 'notes',
+            type: 'richText',
+            editor: lexicalEditor({
+                features: () => {
+                    return [
+                        ParagraphFeature(),
+                        BoldFeature(),
+                        ItalicFeature(),
+                        UnderlineFeature(),
+                        InlineToolbarFeature()
+                    ]
+                },
+            }),
+            admin: {
+                position: 'sidebar',
+            }
         },
     ],
 }
