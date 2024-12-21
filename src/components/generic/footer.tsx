@@ -1,6 +1,7 @@
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 import { items, secondaryItems } from "./navbar";
 import Link from "next/link";
+import Image from "next/image";
 
 const sections = [
     {
@@ -22,10 +23,12 @@ export const Footer = () => {
                         <div className="flex w-full max-w-96 shrink flex-col items-center justify-between gap-6 lg:items-start">
                             <div>
                                 <span className="flex items-center justify-center gap-4 lg:justify-start">
-                                    <img
-                                        src="https://www.shadcnblocks.com/images/block/block-1.svg"
+                                    <Image
+                                        src="/assets/logo.png"
+                                        className="w-12"
+                                        width={50}
+                                        height={50}
                                         alt="logo"
-                                        className="h-11"
                                     />
                                     <p className="text-3xl font-semibold">Sirio Next Gen</p>
                                 </span>

@@ -9,6 +9,7 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet";
 import Link from "next/link";
+import Image from "next/image";
 
 export const items: { label: string; href: string }[] = [
     { label: "Home", href: "/" },
@@ -28,9 +29,11 @@ export const Navbar = () => {
                 <nav className="hidden justify-between lg:flex">
                     <div className="flex items-center gap-6">
                         <div className="flex items-center gap-2">
-                            <img
-                                src="https://www.shadcnblocks.com/images/block/block-1.svg"
-                                className="w-8"
+                            <Image
+                                src="/assets/logo.png"
+                                className="w-12"
+                                width={50}
+                                height={50}
                                 alt="logo"
                             />
                             <span className="text-xl font-bold">Sirio Next Gen</span>
@@ -54,9 +57,11 @@ export const Navbar = () => {
                 <div className="block lg:hidden">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                            <img
-                                src="https://www.shadcnblocks.com/images/block/block-1.svg"
-                                className="w-8"
+                            <Image
+                                src="/assets/logo.png"
+                                className="w-12"
+                                width={50}
+                                height={50}
                                 alt="logo"
                             />
                             <span className="text-xl font-bold">Sirio Next Gen</span>
@@ -71,9 +76,11 @@ export const Navbar = () => {
                                 <SheetHeader>
                                     <SheetTitle>
                                         <div className="flex items-center gap-2">
-                                            <img
-                                                src="https://www.shadcnblocks.com/images/block/block-1.svg"
-                                                className="w-8"
+                                            <Image
+                                                src="/assets/logo.png"
+                                                className="w-12"
+                                                width={50}
+                                                height={50}
                                                 alt="logo"
                                             />
                                             <span className="text-xl font-bold">Sirio Next Gen</span>
